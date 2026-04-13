@@ -1,0 +1,42 @@
+# Benchmark suite configuration
+
+benchmarks:
+
+  speed:
+    enabled: true
+    num_tokens: 256
+    num_warmup_tokens: 16
+    num_runs: 1
+    prompts:
+      - "Write a detailed essay about the history of artificial intelligence and its impact on society."
+      - "Explain the differences between supervised, unsupervised, and reinforcement learning with examples."
+
+  mmlu:
+    enabled: true
+    num_samples: 100
+    seed: 42
+    categories: all   # or list specific: [abstract_algebra, anatomy, ...]
+
+  humaneval:
+    enabled: true
+    num_samples: 50
+    timeout_sec: 10.0
+
+  truthfulqa:
+    enabled: false
+    num_samples: 100
+    seed: 42
+
+  long_context:
+    enabled: false
+    context_lengths: [4096, 8192, 16384, 32768]
+    depth_levels: [0.1, 0.25, 0.5, 0.75, 0.9]
+
+# Default quantization to use when not specified
+default_quantization: "4bit"
+
+# Cache settings
+cache:
+  results_db: "~/.cache/llm-bench/results.db"
+  gguf_dir: "~/.cache/llm-bench/gguf"
+  hf_dir: "~/.cache/llm-bench/hf"

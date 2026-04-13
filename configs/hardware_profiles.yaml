@@ -1,0 +1,66 @@
+# Hardware profile recommendations for llm-bench
+# Maps GPU VRAM tiers to suggested models and quantizations
+
+tiers:
+
+  gpu_high:
+    vram_min_gb: 40
+    description: "High-end GPU (A100, H100, 2x3090, etc.)"
+    headline: "Run the biggest open-source models locally"
+    suggested_quants: [fp16, 8bit, 4bit]
+    recommended_model_ids:
+      - llama-3.1-70b
+      - qwen2.5-72b
+      - mixtral-8x7b
+      - command-r-35b
+      - gemma-2-27b
+
+  gpu_mid:
+    vram_min_gb: 20
+    description: "Mid-range GPU (RTX 3090, 4090, A5000)"
+    headline: "Handle most 7B–30B models with ease"
+    suggested_quants: [8bit, 4bit]
+    recommended_model_ids:
+      - llama-3.1-8b
+      - qwen2.5-14b
+      - phi-4
+      - mistral-nemo-12b
+      - deepseek-r1-14b
+
+  gpu_low:
+    vram_min_gb: 6
+    description: "Consumer GPU (RTX 3060, 4060, 6GB VRAM)"
+    headline: "Great for 7B–8B models at 4-bit"
+    suggested_quants: [4bit]
+    recommended_model_ids:
+      - llama-3.1-8b
+      - qwen2.5-7b
+      - mistral-7b-v0.3
+      - phi-3.5-mini
+      - deepseek-r1-7b
+
+  cpu_only:
+    vram_min_gb: 0
+    description: "CPU-only (no GPU)"
+    headline: "CPU-only mode — 3B–7B quantised models work"
+    suggested_quants: [4bit]
+    recommended_model_ids:
+      - llama-3.2-3b
+      - phi-3.5-mini
+      - qwen2.5-7b
+
+# Known GPU models and their VRAM
+known_gpus:
+  "NVIDIA GeForce RTX 3060": 12
+  "NVIDIA GeForce RTX 3070": 8
+  "NVIDIA GeForce RTX 3080": 10
+  "NVIDIA GeForce RTX 3090": 24
+  "NVIDIA GeForce RTX 4060": 8
+  "NVIDIA GeForce RTX 4070": 12
+  "NVIDIA GeForce RTX 4080": 16
+  "NVIDIA GeForce RTX 4090": 24
+  "NVIDIA A10": 24
+  "NVIDIA A100 40GB": 40
+  "NVIDIA A100 80GB": 80
+  "NVIDIA H100": 80
+  "Apple Silicon (MPS)": 96  # M2 Max 96GB

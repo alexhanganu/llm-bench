@@ -1,0 +1,126 @@
+{
+  "_meta": {
+    "generated_by": "llm-bench v0.1.0",
+    "note": "Pre-computed results. Run 'llm-bench benchmark' to generate fresh results on your hardware."
+  },
+  "hardware_profiles": {
+    "rtx3090": {
+      "cpu_name": "AMD Ryzen 9 5900X",
+      "cpu_cores": 12,
+      "ram_total_gb": 64,
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "vram_total_gb": 24.0
+    },
+    "rtx4090": {
+      "cpu_name": "Intel Core i9-13900K",
+      "cpu_cores": 24,
+      "ram_total_gb": 128,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "vram_total_gb": 24.0
+    },
+    "m2_max": {
+      "cpu_name": "Apple M2 Max",
+      "cpu_cores": 12,
+      "ram_total_gb": 96,
+      "gpu": "Apple Silicon MPS",
+      "vram_total_gb": 96.0
+    },
+    "a100_80gb": {
+      "cpu_name": "AMD EPYC 7742",
+      "cpu_cores": 64,
+      "ram_total_gb": 512,
+      "gpu": "NVIDIA A100 80GB",
+      "vram_total_gb": 80.0
+    }
+  },
+  "speed_results": {
+    "rtx3090": [
+      {"model_id": "llama-3.1-8b",       "quantization": "4bit", "tokens_per_sec": 87.4,  "ttft_ms": 38,  "memory_gb": 5.8},
+      {"model_id": "llama-3.1-8b",       "quantization": "8bit", "tokens_per_sec": 54.2,  "ttft_ms": 45,  "memory_gb": 8.1},
+      {"model_id": "llama-3.1-8b",       "quantization": "fp16", "tokens_per_sec": 42.1,  "ttft_ms": 52,  "memory_gb": 15.9},
+      {"model_id": "llama-3.2-3b",       "quantization": "4bit", "tokens_per_sec": 148.6, "ttft_ms": 22,  "memory_gb": 2.4},
+      {"model_id": "qwen2.5-7b",         "quantization": "4bit", "tokens_per_sec": 91.3,  "ttft_ms": 36,  "memory_gb": 5.1},
+      {"model_id": "qwen2.5-7b",         "quantization": "8bit", "tokens_per_sec": 57.8,  "ttft_ms": 43,  "memory_gb": 7.3},
+      {"model_id": "qwen2.5-coder-7b",   "quantization": "4bit", "tokens_per_sec": 89.7,  "ttft_ms": 37,  "memory_gb": 5.2},
+      {"model_id": "mistral-7b-v0.3",    "quantization": "4bit", "tokens_per_sec": 95.1,  "ttft_ms": 34,  "memory_gb": 4.9},
+      {"model_id": "mistral-7b-v0.3",    "quantization": "8bit", "tokens_per_sec": 60.3,  "ttft_ms": 40,  "memory_gb": 7.1},
+      {"model_id": "phi-3.5-mini",       "quantization": "4bit", "tokens_per_sec": 132.4, "ttft_ms": 26,  "memory_gb": 2.9},
+      {"model_id": "phi-3.5-mini",       "quantization": "8bit", "tokens_per_sec": 84.6,  "ttft_ms": 31,  "memory_gb": 4.1},
+      {"model_id": "gemma-2-9b",         "quantization": "4bit", "tokens_per_sec": 72.8,  "ttft_ms": 44,  "memory_gb": 5.9},
+      {"model_id": "deepseek-r1-7b",     "quantization": "4bit", "tokens_per_sec": 78.3,  "ttft_ms": 41,  "memory_gb": 5.4},
+      {"model_id": "openchat-3.5",       "quantization": "4bit", "tokens_per_sec": 93.6,  "ttft_ms": 35,  "memory_gb": 5.0},
+      {"model_id": "zephyr-7b-beta",     "quantization": "4bit", "tokens_per_sec": 92.4,  "ttft_ms": 35,  "memory_gb": 5.0},
+      {"model_id": "mistral-nemo-12b",   "quantization": "4bit", "tokens_per_sec": 51.2,  "ttft_ms": 58,  "memory_gb": 7.4},
+      {"model_id": "yi-1.5-9b",         "quantization": "4bit", "tokens_per_sec": 68.9,  "ttft_ms": 46,  "memory_gb": 5.7},
+      {"model_id": "qwen2.5-14b",       "quantization": "4bit", "tokens_per_sec": 39.1,  "ttft_ms": 72,  "memory_gb": 8.8}
+    ],
+    "rtx4090": [
+      {"model_id": "llama-3.1-8b",       "quantization": "4bit", "tokens_per_sec": 142.3, "ttft_ms": 24,  "memory_gb": 5.8},
+      {"model_id": "llama-3.2-3b",       "quantization": "4bit", "tokens_per_sec": 238.7, "ttft_ms": 14,  "memory_gb": 2.4},
+      {"model_id": "qwen2.5-7b",         "quantization": "4bit", "tokens_per_sec": 147.9, "ttft_ms": 23,  "memory_gb": 5.1},
+      {"model_id": "mistral-7b-v0.3",    "quantization": "4bit", "tokens_per_sec": 153.2, "ttft_ms": 21,  "memory_gb": 4.9},
+      {"model_id": "phi-3.5-mini",       "quantization": "4bit", "tokens_per_sec": 211.6, "ttft_ms": 16,  "memory_gb": 2.9},
+      {"model_id": "phi-4",              "quantization": "4bit", "tokens_per_sec": 74.8,  "ttft_ms": 44,  "memory_gb": 8.6},
+      {"model_id": "qwen2.5-14b",       "quantization": "4bit", "tokens_per_sec": 63.4,  "ttft_ms": 51,  "memory_gb": 8.8},
+      {"model_id": "qwen2.5-14b",       "quantization": "8bit", "tokens_per_sec": 42.1,  "ttft_ms": 67,  "memory_gb": 14.2},
+      {"model_id": "deepseek-r1-14b",   "quantization": "4bit", "tokens_per_sec": 58.9,  "ttft_ms": 56,  "memory_gb": 9.1},
+      {"model_id": "gemma-2-27b",       "quantization": "4bit", "tokens_per_sec": 34.7,  "ttft_ms": 91,  "memory_gb": 15.8}
+    ],
+    "m2_max": [
+      {"model_id": "llama-3.1-8b",       "quantization": "4bit", "tokens_per_sec": 68.3,  "ttft_ms": 48,  "memory_gb": 5.8},
+      {"model_id": "llama-3.2-3b",       "quantization": "4bit", "tokens_per_sec": 112.4, "ttft_ms": 29,  "memory_gb": 2.4},
+      {"model_id": "qwen2.5-7b",         "quantization": "4bit", "tokens_per_sec": 71.2,  "ttft_ms": 46,  "memory_gb": 5.1},
+      {"model_id": "mistral-7b-v0.3",    "quantization": "4bit", "tokens_per_sec": 74.8,  "ttft_ms": 44,  "memory_gb": 4.9},
+      {"model_id": "phi-3.5-mini",       "quantization": "4bit", "tokens_per_sec": 98.7,  "ttft_ms": 33,  "memory_gb": 2.9},
+      {"model_id": "llama-3.1-70b",      "quantization": "4bit", "tokens_per_sec": 12.4,  "ttft_ms": 210, "memory_gb": 41.3},
+      {"model_id": "qwen2.5-72b",        "quantization": "4bit", "tokens_per_sec": 9.8,   "ttft_ms": 268, "memory_gb": 43.7},
+      {"model_id": "mixtral-8x7b",       "quantization": "4bit", "tokens_per_sec": 24.6,  "ttft_ms": 124, "memory_gb": 26.8}
+    ]
+  },
+  "quality_results": {
+    "mmlu": [
+      {"model_id": "llama-3.1-8b",     "quantization": "4bit", "score": 0.682},
+      {"model_id": "llama-3.1-8b",     "quantization": "fp16", "score": 0.714},
+      {"model_id": "llama-3.2-3b",     "quantization": "4bit", "score": 0.589},
+      {"model_id": "qwen2.5-7b",       "quantization": "4bit", "score": 0.721},
+      {"model_id": "qwen2.5-14b",      "quantization": "4bit", "score": 0.789},
+      {"model_id": "qwen2.5-72b",      "quantization": "4bit", "score": 0.847},
+      {"model_id": "mistral-7b-v0.3",  "quantization": "4bit", "score": 0.641},
+      {"model_id": "mistral-nemo-12b", "quantization": "4bit", "score": 0.698},
+      {"model_id": "phi-3.5-mini",     "quantization": "4bit", "score": 0.693},
+      {"model_id": "phi-4",            "quantization": "4bit", "score": 0.802},
+      {"model_id": "gemma-2-9b",       "quantization": "4bit", "score": 0.718},
+      {"model_id": "gemma-2-27b",      "quantization": "4bit", "score": 0.771},
+      {"model_id": "deepseek-r1-7b",   "quantization": "4bit", "score": 0.712},
+      {"model_id": "deepseek-r1-14b",  "quantization": "4bit", "score": 0.768},
+      {"model_id": "mixtral-8x7b",     "quantization": "4bit", "score": 0.704},
+      {"model_id": "command-r-35b",    "quantization": "4bit", "score": 0.741},
+      {"model_id": "openchat-3.5",     "quantization": "4bit", "score": 0.632},
+      {"model_id": "zephyr-7b-beta",   "quantization": "4bit", "score": 0.617},
+      {"model_id": "codellama-13b",    "quantization": "4bit", "score": 0.528},
+      {"model_id": "yi-1.5-9b",       "quantization": "4bit", "score": 0.678}
+    ],
+    "humaneval": [
+      {"model_id": "qwen2.5-coder-7b", "quantization": "4bit", "score": 0.841},
+      {"model_id": "deepseek-coder-v2-16b", "quantization": "4bit", "score": 0.872},
+      {"model_id": "qwen2.5-7b",      "quantization": "4bit", "score": 0.712},
+      {"model_id": "qwen2.5-14b",     "quantization": "4bit", "score": 0.768},
+      {"model_id": "phi-4",           "quantization": "4bit", "score": 0.734},
+      {"model_id": "llama-3.1-8b",    "quantization": "4bit", "score": 0.621},
+      {"model_id": "deepseek-r1-7b",  "quantization": "4bit", "score": 0.724},
+      {"model_id": "codellama-13b",   "quantization": "4bit", "score": 0.648},
+      {"model_id": "starcoder2-15b",  "quantization": "4bit", "score": 0.743},
+      {"model_id": "mistral-7b-v0.3", "quantization": "4bit", "score": 0.524},
+      {"model_id": "gemma-2-9b",      "quantization": "4bit", "score": 0.592}
+    ],
+    "truthfulqa": [
+      {"model_id": "llama-3.1-8b",    "quantization": "4bit", "score": 0.521},
+      {"model_id": "qwen2.5-7b",      "quantization": "4bit", "score": 0.548},
+      {"model_id": "mistral-7b-v0.3", "quantization": "4bit", "score": 0.493},
+      {"model_id": "phi-3.5-mini",    "quantization": "4bit", "score": 0.567},
+      {"model_id": "phi-4",           "quantization": "4bit", "score": 0.611},
+      {"model_id": "gemma-2-9b",      "quantization": "4bit", "score": 0.574},
+      {"model_id": "deepseek-r1-7b",  "quantization": "4bit", "score": 0.531}
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+# llm-bench requirements
+# Core
+streamlit>=1.35.0
+plotly>=5.20.0
+pandas>=2.1.0
+numpy>=1.26.0
+
+# ML / model loading
+torch>=2.3.0
+transformers>=4.42.0
+accelerate>=0.30.0
+bitsandbytes>=0.43.0       # 8-bit / 4-bit quantization
+sentencepiece>=0.2.0       # tokenizers
+tokenizers>=0.19.0
+
+# llama.cpp Python bindings (optional – for GGUF support)
+# llama-cpp-python>=0.2.82  # uncomment if using GGUF models
+
+# Evaluation datasets
+datasets>=2.20.0
+
+# Hardware detection
+psutil>=5.9.0
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.66.0
+rich>=13.7.0               # pretty terminal output
+click>=8.1.7               # CLI (llm-bench command)
+
+# Dev / test
+pytest>=8.0.0
+pytest-cov>=5.0.0

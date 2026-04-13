@@ -1,0 +1,115 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install CPU-only dependencies
+        run: |
+          pip install --upgrade pip
+          pip install psutil pyyaml pandas numpy rich click
+          pip install pytest pytest-cov
+
+      - name: Run tests (no GPU required)
+        run: |
+          pytest tests/ -v \
+            --cov=llm_bench \
+            --cov-report=term-missing \
+            --cov-report=xml \
+            -k "not test_detect_hardware_runs and not test_hardware_summary"
+        env:
+          PYTHONPATH: .
+
+      - name: Upload coverage
+        if: matrix.python-version == '3.11'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: unittests
+
+  registry-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate model registry
+        run: |
+          pip install pyyaml
+          python - <<'EOF'
+          import sys
+          sys.path.insert(0, '.')
+          from llm_bench.models.registry import MODELS, get_families, get_all_tags
+          
+          errors = []
+          required = {"name","family","developer","params","context","hf_repo","min_vram_gb","license"}
+          
+          for mid, meta in MODELS.items():
+              missing = required - meta.keys()
+              if missing:
+                  errors.append(f"{mid}: missing {missing}")
+              if "4bit" not in meta.get("min_vram_gb", {}):
+                  errors.append(f"{mid}: no 4bit VRAM entry")
+              if meta.get("context", 0) <= 0:
+                  errors.append(f"{mid}: non-positive context")
+          
+          if errors:
+              print("Registry errors:", file=sys.stderr)
+              for e in errors:
+                  print(f"  {e}", file=sys.stderr)
+              sys.exit(1)
+          
+          print(f"✓ Registry OK: {len(MODELS)} models, {len(get_families())} families")
+          EOF
+
+  precomputed-data-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate pre-computed results JSON
+        run: |
+          python - <<'EOF'
+          import json, sys
+          from pathlib import Path
+          
+          p = Path("data/precomputed/all_results.json")
+          if not p.exists():
+              print("WARNING: no precomputed results file found", file=sys.stderr)
+              sys.exit(0)
+          
+          with open(p) as f:
+              data = json.load(f)
+          
+          required_keys = {"speed_results", "quality_results"}
+          missing = required_keys - data.keys()
+          if missing:
+              print(f"ERROR: Missing keys: {missing}", file=sys.stderr)
+              sys.exit(1)
+          
+          hw_tags = list(data.get("speed_results", {}).keys())
+          print(f"✓ Pre-computed results: {hw_tags}")
+          EOF
